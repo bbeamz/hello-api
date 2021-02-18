@@ -1,0 +1,5 @@
+CREATE TABLE `hello` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(16) NOT NULL UNIQUE,
+	PRIMARY KEY (`id`,`name`)
+) ENGINE=InnoDB;

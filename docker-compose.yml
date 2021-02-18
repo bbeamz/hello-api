@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: habana7
+      MYSQL_DATABASE: hello
+      MYSQL_USER: root
+      MYSQL_PASSWORD: habana7
+
+  mysql-seed:
+    image: flyway/flyway
+    command: -url=jdbc:mysql://mysql -schemas=hello -user=root -password=habana7 -connectRetries=60 -baselineOnMigrate=true migrate
+    volumes:
+      - .:/flyway/sql
+    depends_on:
+      - mysql
+
+  jobs-mock:
+    image: rodolpheche/wiremock
+    ports:
+      - "10500:8080"
+    command: --verbose
+    depends_on:
+      - mysql-seed
