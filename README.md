@@ -1,104 +1,35 @@
-Overview
-========
-This is a starter project using jax-rs / jersey.  I've created this because I often find myself wanting to expirement with something that needs a webservice, and this gives me a starting spot.  Clone or fork and use as needed.
+## Overview  
 
-Note: if you like this version, I highly recommend checking out the sample dropwizard implemenation [https://github.com/jasonray/jersey-starterkit/tree/dropwizard], much better for quick implemenations of java based web services.  I love me some dropwizard.  Until I discovered node/express. 
+This is a simple Java REST API example using:
+- Jersey
+- JAX-RS
+- MyBatis
+- Guice
+- Docker Compose
+- Flyway
 
-How-to run
-==========
-0.1) Pre-req
+### Need to install locally  
 
-You will need the following installed:
-Java
-Gradle (optional)
-A java web container, such as Tomcat.
+- Gradle
+- Docker
+- Docker Compose
 
-If you are on a mac, I recommend to do the following:
-- install Homebrew (see: http://brew.sh/)
-- install Java and Tomcat:
-```
-brew cask install java
-brew install tomcat
-```
+### How-to run  
 
-If you will be using Tomcat, you will likely want to make sure you have CATALINA_HOME set.  
-On a mac, edit your profile
-```
-vi ~/.bash_profile
-```
+#### Gradle:  
 
-and then add the following (replacing with the directory where you Tomcat instance is deployed:
-```
-export CATALINA_HOME=/usr/local/Cellar/tomcat/x.x.x/libexec
-```
+1. `gradle cleanEclipse eclipse` (if using Eclipse)
+2. `gradle build`
 
-1) Compile
-The project compiles using gradle.  If you already have gradle installed, compile using:
-```
-gradle build
-```
+#### Stand up external dependencies:  
 
-If you do not have gradle installed, you can utilize the gradle wrapper included in the source
-```
-./gradlew war
-```
+1. Run `./local-deps.sh`
+2. Verify that Wiremock, MySQL, and the Flyway migrate are running: `docker ps`
+3. Give the Flyway migrate time to run (about 30 seconds - 1 minute); ensure the docker image is no longer around with `docker ps`. This ensures pristine seed data exists each run.
 
-The war file is compiled to: `build/libs/jersey-starterkit.war`
+#### Bring up the webapp:  
 
-
-2) Deploy the war file to web container.  I've been using apache-tomcat [http://tomcat.apache.org], and typically copy the war to the tomcat webapps directory.  On my machine:
-```
-cp build/libs/jersey-starterkit.war /usr/local/Cellar/tomcat/x.x.x/libexec/webapps/
-```
-
-Shortcut: if you are using tomcat, and $CATALINA_HOME is set, you can run: `./deploy.sh`
-
-
-3) Confirm that it is running by fetching the URL at on webcontainer + /jersey-helloworld/rest/hello.  On my machine:
-```
-curl localhost:8080/jersey-starterkit/rest/hello
-```
-
-The supported endpoints are:
-```
-http://localhost:8080/jersey-starterkit/rest/customer/id/1
-```
-```
-http://localhost:8080/jersey-starterkit/rest/echo?m=hello
-```
-```
-http://localhost:8080/jersey-starterkit/rest/hello
-```
-
-
-Opening in Eclipse
-==================
-If you use Eclipse, the gradle scripts are nice enough to create your eclipse project and classpath files.
-
-First time only
----------------
-If you have gradle installed, run:
-```
-gradle eclipse
-```
-
-Now you can import the project into eclipse.
-
-
-Updating classpath files
-------------------------
-If you update dependencies, pull the new libs into your classpath:
-```
-gradle eclipseClasspath
-```
-
-Logging
-=======
-There is a log4j configuration defined in `src/main/resources/log4j.properties`.  By default this will log to the STDOUT and to a series of log files.  Change the logging configuration as needed.
-
-If you would like to use the default logging, create the logging folders:
-```
-> sudo mkdir /restapi
-> chmod a+wr /restapi
-````
-
+1. Get an instance of Tomcat going (can configure this in Eclipse)
+2. Setup Tomcat HTTP port for 8081
+3. Mount the webapp module in Tomcat, using "/v1" as the root context
+4. Launch the webapp (in Eclipse, can just right click the project and Run as --> Run on server)
