@@ -1,5 +1,8 @@
 package beamer.net.hello.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Name {
 	private Long id;
 	private String name;

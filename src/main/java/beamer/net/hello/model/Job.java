@@ -1,5 +1,8 @@
 package beamer.net.hello.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Job {
 	private String companyName;
 	private String jobTitle;

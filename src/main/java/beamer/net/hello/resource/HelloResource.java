@@ -3,6 +3,7 @@ package beamer.net.hello.resource;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -51,6 +52,7 @@ public class HelloResource {
 
 	@POST
 	@Path("names")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Name name, @Context UriInfo uriInfo) {
 		Long newId = helloService.createName(name);
 
@@ -78,9 +80,9 @@ public class HelloResource {
 	}
 
 	@GET
-	@Path("jobs")
+	@Path("jobs/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Job getJob(@QueryParam("name") String name) {
+	public Job getJob(@PathParam("name") String name) {
 		return helloService.getJob(name);
 	}
 

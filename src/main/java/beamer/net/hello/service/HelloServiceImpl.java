@@ -30,12 +30,12 @@ public class HelloServiceImpl implements HelloService {
 		
 		ClientResponse response = Client.create()
 				.resource(BASE_URL + V1_JOBS)
-				.queryParam(NAME, name)
+				.path(name)
 				.accept(APPLICATION_JSON)
 				.get(ClientResponse.class);
 				
 
-		if (response.getStatus() >= 500) {
+		if (response.getStatus() >= 400) {
 			throw new WebApplicationException(response.getStatus());
 		}
 
@@ -44,7 +44,13 @@ public class HelloServiceImpl implements HelloService {
 
 	@Override
 	public Name getName(Long id) {
-		return helloMapper.getName(id);
+		Name name = helloMapper.getName(id);
+		
+		if (name == null) {
+			throw new WebApplicationException(404);
+		}
+		
+		return name;
 	}
 
 	@Override
