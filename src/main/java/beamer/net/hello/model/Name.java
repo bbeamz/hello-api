@@ -19,4 +19,14 @@ public class Name {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public Name withId(Long id) {
+		this.id = id;
+		return this;
+	}
+	
+	public Name withName(String name) {
+		this.name = name;
+		return this;
+	}
 }

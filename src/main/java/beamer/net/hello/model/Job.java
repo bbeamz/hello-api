@@ -19,4 +19,14 @@ public class Job {
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
+	
+	public Job withCompanyName(String companyName) {
+		this.companyName = companyName;
+		return this;
+	}
+	
+	public Job withJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+		return this;
+	}
 }
