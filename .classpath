@@ -12,11 +12,6 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="lib" path="/Users/bbeam/.gradle/caches/modules-2/files-2.1/com.sun.jersey/jersey-client/1.19.3/dbe8c3a448eed6d0cd8360915d0a46bc31b33485/jersey-client-1.19.3.jar" sourcepath="/Users/bbeam/.gradle/caches/modules-2/files-2.1/com.sun.jersey/jersey-client/1.19.3/5d3881cb4391846348cd826768bac164c5dbc260/jersey-client-1.19.3-sources.jar">
 		<attributes>
@@ -240,6 +235,11 @@
 			<attribute name="test" value="true"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin/default"/>
