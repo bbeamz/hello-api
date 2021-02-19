@@ -7,9 +7,9 @@
 	<!-- <listener>
 		<listener-class>beamer.net.hello.bootstrap.Main</listener-class>
 	</listener> -->
-	<display-name>jersey sample</display-name>
+	<display-name>java-rest-starter</display-name>
 	<servlet>
-		<servlet-name>jersey</servlet-name>
+		<servlet-name>java-rest-starter</servlet-name>
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
@@ -19,16 +19,10 @@
 		    <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
 		    <param-value>true</param-value>
 		</init-param>
-
-		<!-- the following is only needed if you want to use the built-in support 
-			for mapping pojo objects to json. Because i am using jaxb annotation, i will 
-			disable the pojo mapping feature -->
-		<!-- <init-param> <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name> 
-			<param-value>true</param-value> </init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>jersey</servlet-name>
+		<servlet-name>java-rest-starter</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>

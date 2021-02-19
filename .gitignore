@@ -1,6 +1,4 @@
 # Project structure related
-.classpath
-.project
 .settings
 .metadata
 tmp/**
