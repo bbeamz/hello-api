@@ -1,12 +1,12 @@
 ## Overview  
 
 This is a simple Java REST API example using:
-- Jersey: for simple Java REST webapp
-- JAX-RS: for simple Java REST webapp
-- MyBatis: for an easy MySQL DAO layer
-- Guice: simple DI framework
-- Docker Compose: for standing up external dependencies locally
-- Flyway: for standing up a fresh local instance of MySQL with seed data
+- __Jersey__: for simple Java REST webapp
+- __JAX-RS__: for simple Java REST webapp
+- __MyBatis__: for an easy MySQL DAO layer
+- __Guice__: simple DI framework
+- __Docker Compose__: for standing up external dependencies locally
+- __Flyway__: for standing up a fresh local instance of MySQL with seed data
 
 By default, this API has endpoints accessible at:
 - GET /v1/hello/names
