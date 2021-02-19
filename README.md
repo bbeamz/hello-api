@@ -1,12 +1,19 @@
 ## Overview  
 
 This is a simple Java REST API example using:
-- Jersey
-- JAX-RS
-- MyBatis
-- Guice
-- Docker Compose
-- Flyway
+- Jersey: for simple Java REST webapp
+- JAX-RS: for simple Java REST webapp
+- MyBatis: for an easy MySQL DAO layer
+- Guice: simple DI framework
+- Docker Compose: for standing up external dependencies locally
+- Flyway: for standing up a fresh local instance of MySQL with seed data
+
+By default, this API has endpoints accessible at:
+- GET /v1/hello/names
+- GET /v1/hello/names/{id}
+- POST /v1/hello/names `{ name: NEW_NAME }`
+- DELETE /v1/hello/names/{name}
+- GET /v1/hello/jobs/{name}
 
 ### Need to install locally  
 
@@ -33,3 +40,15 @@ This is a simple Java REST API example using:
 2. Setup Tomcat HTTP port for 8081
 3. Mount the webapp module in Tomcat, using "/v1" as the root context
 4. Launch the webapp (in Eclipse, can just right click the project and Run as --> Run on server)
+
+### Helpful local things for testing
+
+- After standing up MySQL with seed data, you can exec into the container with `docker exec -it jersey-starterkit_mysql_1 mysql -uroot -phabana7` (these credentials are only for local or test development)
+- After successfully launching the webapp, give it a test with:
+   ```bash
+   curl -X GET localhost:8081/v1/hello/names -v
+   curl -H "Content-Type: application/json" -X POST -d '{"name":"sam"}' localhost:8081/v1/hello/names -v (extract the LOCATION header from the POST response
+   curl -X GET localhost:8081/v1/hello/names/{ID_FROM_POST_LOCATION_HEADER} -v
+   curl -X DELETE localhost:8081/v1/hello/names/sam -v` 
+   ```
+- You can verify mutations in the persitence layer by exec'ing into the local MySQL instance and verifying POST/DELETE operations modify the `hello` table correctly.
