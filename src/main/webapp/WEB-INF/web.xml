@@ -7,9 +7,9 @@
 	<!-- <listener>
 		<listener-class>beamer.net.hello.bootstrap.Main</listener-class>
 	</listener> -->
-	<display-name>java-rest-starter</display-name>
+	<display-name>hello-api</display-name>
 	<servlet>
-		<servlet-name>java-rest-starter</servlet-name>
+		<servlet-name>hello-api</servlet-name>
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
@@ -22,7 +22,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>java-rest-starter</servlet-name>
+		<servlet-name>hello-api</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>

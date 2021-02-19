@@ -45,7 +45,7 @@ For now, set the JRE of the project in your IDE to 1.8 / Java 8. (TODO: update d
 
 ### Helpful local things for testing
 
-- After standing up MySQL with seed data, you can exec into the container with `docker exec -it java-rest-starter_mysql_1 mysql -uroot -phabana7` (these credentials are only for local or test development)
+- After standing up MySQL with seed data, you can exec into the container with `docker exec -it hello-api_mysql_1 mysql -uroot -phabana7` (these credentials are only for local or test development)
 - After successfully launching the webapp, give it a test with:
    ```bash
    curl -X GET localhost:8081/v1/hello/names -v
